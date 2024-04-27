@@ -1,53 +1,46 @@
-#include <Arduino.h>
-#include <DHT.h>
 
-#define DHTPIN 2     // Pin where the DHT11/DHT22 is connected
-#define DHTTYPE DHT11   // DHT 11
-const int lightSensorPin = A1;
-const int relayPin = 7;  //connected to digital Pin 7 
-const int moistureSensorPin = A2;
-DHT dht(DHTPIN, DHTTYPE);
-const int min_realvalue = 0; 
-const int max_realvalue = 100; 
-void setup() {
-  Serial.begin(9600);
-  pinMode(relayPin, OUTPUT);
-  dht.begin();
-}
-void pump (){
-   
-}
-void loop() {
-   int sensorValue1 = analogRead(moistureSensorPin);
-   Serial.print("Moisture:  ");
-   Serial.print(sensorValue1);
- 
-  
-  int sensorValue = analogRead(lightSensorPin); //taking reading
-  float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature();  // Celsius by default
-   if (isnan(humidity) || isnan(temperature)) {
-    Serial.println("Failed to read from DHT sensor!");
-    return;
-  }
-  if (sensorValue1 <= 230){
-    digitalWrite(relayPin, LOW);  // Turn the relay on
-      
-  }
-  else {
-      digitalWrite(relayPin, HIGH);   // Turn the relay off    
-  }
-  // Check if any reads failed and exit early (to try again).
- 
-  Serial.print("The Light: "); 
-  Serial.print(sensorValue);
-  Serial.print(" \t ");  
-  Serial.print("Humidity: ");
-  Serial.print(humidity);
-  Serial.print(" %\t");
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.println(" °C");
+
+# Plants Friend: Automated Plant Care System
+
+## Overview
+"Plants Friend" is an innovative project that combines technology and nature to simplify plant care. Whether you're a seasoned gardener or a newbie, this system ensures optimal conditions for your beloved greenery. Let's dive into the details:
+
+## Features
+
+1. **Automatic Watering**
+   - Soil moisture detection: The system checks soil moisture levels and activates a water pump when needed.
+   - Bye-bye overwatering and underwatering!
+
+2. **Temperature Regulation**
+   - Monitors ambient temperature: Extreme heat or cold can stress plants. "Plants Friend" keeps them cozy.
+
+3. **Humidity Control**
+   - Customizable humidity levels: Different plants have different preferences. Adjust to their liking.
+
+4. **Energy-Efficient**
+   - Relay module: The water pump turns on only when necessary, conserving energy and water.
+
+5. **Real-Time Monitoring**
+   - Light sensors: Get remote updates on plant health. Is it too sunny? Too dark? Adjust accordingly.
+
+6. **Customizable Settings**
+   - Fine-tune for specific plants: Some like it dry, others crave humidity. "Plants Friend" adapts.
+
+## Benefits
+
+- **Convenience**: No more manual watering schedules. "Plants Friend" does it for you.
+- **Healthier Plants**: Optimal conditions lead to robust growth and vibrant foliage.
+- **Time-Saver**: Busy? Let the system handle plant care while you focus on other tasks.
+- **Eco-Friendly**: Efficient water usage reduces waste.
+- **Data Insights**: Monitor trends and make informed adjustments.
+
+"Plants Friend" simplifies plant care, making it accessible for all. 🌱🌿
+
+---
+
+Whether you're nurturing a windowsill succulent or tending to a backyard garden, "Plants Friend" has your plants covered! 🌼🌿
+
+
 
   
                 // Wait for 1 second
