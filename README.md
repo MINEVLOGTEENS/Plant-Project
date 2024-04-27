@@ -42,8 +42,3 @@ Whether you're nurturing a windowsill succulent or tending to a backyard garden,
 
 
 
-  
-                // Wait for 1 second
-  delay(1000);   
-}
-
